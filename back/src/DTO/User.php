@@ -10,7 +10,7 @@ class User
 {
     #[Assert\NotBlank]
     #[Assert\Email]
-    #[Assert\Unique]
+//    #[Assert\Unique] //todo: why doesn't this work? :(
     private string $email;
 
     private ?string $password = null;
