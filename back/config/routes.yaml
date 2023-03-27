@@ -18,4 +18,5 @@ api_register:
 
 app_logout:
   path: /logout
+  controller: App\Controller\ApiLoginController::logout
   methods: GET

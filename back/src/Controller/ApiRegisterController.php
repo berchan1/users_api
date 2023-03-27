@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ApiRegisterController extends AbstractController
@@ -20,18 +22,9 @@ class ApiRegisterController extends AbstractController
         $this->doctrine = $doctrine;
     }
     #[Route('/api_register', name: 'api_register', methods: 'GET')]
-    public function register(Request $request, ValidatorInterface $validator): Response
+    public function register(Request $request, ValidatorInterface $validator, SerializerInterface $serializer): Response
     {
-        $data = json_decode(
-            $request->getContent(),
-            true
-        );
-        $user = new UserDTO();
-        $user->setEmail($data['email']);
-        $user->setPassword($data['password']);
-        $user->setFirstName($data['first_name']);
-        $user->setLastName($data['last_name']);
-
+        $user = $serializer->deserialize($request->getContent(), \App\DTO\User::class, JsonEncoder::FORMAT);
         $errors = $validator->validate($user);
         if (count($errors) > 0) {
             return new Response((string)$errors, 400);

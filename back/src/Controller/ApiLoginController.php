@@ -21,11 +21,17 @@ class ApiLoginController extends AbstractController
 
         $token = 'aasdasd'; // todo: create token
 
-
         return $this->json([
             'user'   => $user->getUserIdentifier(),
             'token' => $token,
         ]);
     }
 
+    #[Route('/logout', name: 'app_logout', methods: 'GET')]
+    public function logout(): Response
+    {
+        return $this->json([
+            'logout'  => 'success',
+        ]);
+    }
 }
