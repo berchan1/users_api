@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -13,18 +14,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['view'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['view'])]
     private ?string $first_name = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['view'])]
     private ?string $last_name = null;
 
     #[ORM\Column(length: 100)]
     private ?string $password = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['view'])]
     private ?string $email = null;
 
     public function getId(): ?int
