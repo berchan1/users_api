@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\DTO\User as UserDTO;
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
+use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,37 @@ class ApiRegisterController extends AbstractController
     {
         $this->doctrine = $doctrine;
     }
-    #[Route('/api_register', name: 'api_register', methods: 'GET')]
+    #[Route('/api_register', name: 'api_register', methods: 'POST')]
+    /**
+     * registers user
+     *
+     * @Route("/api/register", methods={"POST"})
+     * @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="first_name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="last_name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     type="string"
+     *                 ),
+     *                 example={"email":"imie_nazwisko@wp.pl","first_name":"imie","last_name":"nazwisko","password":"test"}
+     *             )
+     *         )
+     *     ),
+     * @OA\Tag(name="register")
+     */
     public function register(Request $request, ValidatorInterface $validator, SerializerInterface $serializer): Response
     {
         $user = $serializer->deserialize($request->getContent(), \App\DTO\User::class, JsonEncoder::FORMAT);
