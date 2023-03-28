@@ -30,7 +30,7 @@ php bin/console lexik:jwt:generate-keypair
 - [ ] avatar update
 - [x] get users
 - [x] delete user
-- [ ] edit user
+- [x] edit user
 - [x] login
 - [x] logout
 
@@ -60,6 +60,11 @@ curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer {token
 delete user
 ```sh
 curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer {token}" http://localhost:8080/api/delete/{id}
+```
+
+update user
+```sh
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {token}" http://localhost:8080/api/update/12 -d '{"email":"new_email@wp.pl","first_name":"new_name","last_name":"new_last_name","password":"new_pass"}'
 ```
 
 logout
