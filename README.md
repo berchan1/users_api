@@ -32,7 +32,6 @@ php bin/console doctrine:migrations:migrate
 ### TODO's
 
 - unique email validation
-- implement token
 - finish implementing swagger (endpoints are not properly documented)
 - (optional) vue frontend
 
@@ -47,10 +46,16 @@ login
 ```sh
 curl -X POST -H "Content-Type: application/json" http://localhost:8080/api/login -d '{"username":"imie_nazwisko@wp.pl","password":"test"}'
 ```
+after login you will get a token in response 
 
 show users (without passwords)
 ```sh
-curl -X GET -H "Content-Type: application/json" http://localhost:8080/user/api_user
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer {token}" http://localhost:8080/api/get_users
+```
+
+delete user
+```sh
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer {token}" http://localhost:8080/api/delete/{id}
 ```
 
 logout

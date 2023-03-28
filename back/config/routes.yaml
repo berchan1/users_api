@@ -2,9 +2,10 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-api_user:
-  path: /user/api_user
-  controller: App\Controller\UserController::api_user
+get_users:
+  path: /api/get_users
+  controller: App\Controller\ApiUserController::get_users
+  methods: GET
 
 api_login:
   path: /api/login

@@ -37,4 +37,4 @@ security:
     - { path: ^/api/login, roles: PUBLIC_ACCESS }
     - { path: ^/api/register, roles: PUBLIC_ACCESS }
     - { path: ^/api/delete/\d+$, roles: IS_AUTHENTICATED_FULLY }
-    - { path: ^/user/api_user, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/api/get_users, roles: IS_AUTHENTICATED_FULLY }

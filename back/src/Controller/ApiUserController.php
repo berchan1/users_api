@@ -12,11 +12,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-#[Route('/user')]
-class UserController extends AbstractController
+#[Route('/api')]
+class ApiUserController extends AbstractController
 {
-    #[Route('/api_user', name: 'api_user', methods: 'GET')]
-    public function api_user(EntityManagerInterface $entityManager, SerializerInterface $serializer): JsonResponse
+    #[Route('/get_users', name: 'get_users', methods: 'GET')]
+    public function get_users(EntityManagerInterface $entityManager, SerializerInterface $serializer): JsonResponse
     {
         $repository = $entityManager->getRepository(User::class);
         $users = $repository->findAll();
