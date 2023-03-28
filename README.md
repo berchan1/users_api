@@ -24,7 +24,7 @@ php bin/console doctrine:migrations:migrate
 - [x] register
 - [ ] avatar update
 - [x] get users
-- [ ] delete user
+- [x] delete user
 - [ ] edit user
 - [x] login
 - [x] logout

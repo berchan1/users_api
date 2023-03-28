@@ -16,6 +16,11 @@ api_register:
   controller: App\Controller\ApiRegisterController::register
   methods: POST
 
+api_delete:
+  path: /api/delete/{id}
+  controller: App\Controller\ApiDeleteUserController::delete
+  methods: DELETE
+
 app_logout:
   path: /logout
   controller: App\Controller\ApiLoginController::logout
