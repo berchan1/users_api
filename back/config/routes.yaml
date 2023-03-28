@@ -25,3 +25,6 @@ app_logout:
   path: /logout
   controller: App\Controller\ApiLoginController::logout
   methods: GET
+
+#api_login_check:
+#  path: /api/login_check
