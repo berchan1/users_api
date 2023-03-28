@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,13 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ApiUserController extends AbstractController
 {
     #[Route('/get_users', name: 'get_users', methods: 'GET')]
+    /**
+     * lists all users (without passwords)
+     *
+     * @Route("/get_users", methods={"GET"})
+     * @OA\Tag(name="get_users")
+     * )
+     */
     public function get_users(EntityManagerInterface $entityManager, SerializerInterface $serializer): JsonResponse
     {
         $repository = $entityManager->getRepository(User::class);

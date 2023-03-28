@@ -19,6 +19,11 @@ in the `/var/www/users_api/back` directory
 php bin/console doctrine:migrations:migrate
 ```
 
+generate SSL keys
+```sh
+php bin/console lexik:jwt:generate-keypair
+```
+
 ### Endpoints
 
 - [x] register
@@ -32,7 +37,6 @@ php bin/console doctrine:migrations:migrate
 ### TODO's
 
 - unique email validation
-- finish implementing swagger (endpoints are not properly documented)
 - (optional) vue frontend
 
 ### Examples
