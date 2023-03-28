@@ -17,6 +17,11 @@ api_register:
   controller: App\Controller\ApiRegisterController::register
   methods: POST
 
+api_update:
+  path: /api/update/{id}
+  controller: App\Controller\ApiUpdateController::update
+  methods: POST
+
 api_delete:
   path: /api/delete/{id}
   controller: App\Controller\ApiDeleteUserController::delete
